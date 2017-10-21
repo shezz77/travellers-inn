@@ -1,0 +1,5 @@
+#nav{
+    box-shadow: rgba(0, 0, 0, 0.1) 0 3px 10px;
+    background-color: rgb(255, 255, 255);
+    transition: all 0.3s ease-in-out;
+}

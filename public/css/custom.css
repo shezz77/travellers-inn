@@ -1,0 +1,194 @@
+/*Home PAGE*/
+p{
+    margin:0;
+}
+.logo{
+    display:block;
+    color:#a34c00;
+    font-size: 26px;
+    font-weight: bold;
+    margin:45px;
+}
+.recent>a{
+    padding:8px 4px !important;
+    display:block;
+}
+.explore{
+    font-size: 15px;
+    color: #ffffff;
+    line-height: 21px;
+    margin: 25px 0;
+    text-transform: uppercase;
+    font-family: "Montserrat",sans-serif;
+}
+.menu{
+    overflow:hidden;
+}
+.menu>li>a{
+    float:left;
+    display:block;
+    margin:0 5px 0 0;
+    color:#969696;
+}
+.menu .menu__item{
+    border-bottom: 1px solid #000;
+    padding:5px 0;
+}
+.menu .menu__item:last-child{
+    border:none;
+}
+.menu>li>a:hover{
+    color:#ff891e;
+}
+/*role-page*/
+.role,
+.show{
+    margin-top:30px;
+}
+/*footer*/
+footer{
+    clear:both;
+}
+
+
+/*For browse CSs*/
+.btn.btn-default.fileinput-remove.fileinput-remove-button {
+    height: 34px;
+    margin: 0 0 16px;
+    padding: 8px;
+}
+.btn.btn-primary.btn-file {
+    background-color: #ff891e;
+    border: medium none;
+    padding: 6px;
+    margin:0 0 15px;
+}
+/*end */
+/*Post-tabs*/
+.tabs{
+    margin-top: 20px;
+}
+.edit,
+.del{
+    padding:0 8px;
+}
+.role{
+    width: 339px;
+    margin: 22px auto;
+    height: 40px;
+}
+.submitBtn{
+    padding:0 18px;
+}
+blockquote .small:before, blockquote footer:before, blockquote small:before {
+    content: '';
+}
+.heading{
+    background-color: #ff891e !important;
+    color: #ffffff !important;
+    display:block !important;
+}
+
+.CustomButton{
+    padding: 0 20px;
+}
+.panel-default>.panel-heading {
+    color: #333;
+    border-color: #ff891e;
+}
+.country{
+    margin-bottom:20px;
+}
+.featured{
+    background-color: whitesmoke;
+}
+.title > a{
+    font-size: 15px;
+    color: #222222;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: block;
+}
+.title > a:hover{
+    color:#ff891e;
+}
+.description{
+    padding: 3px 0 0 8px;
+    overflow: hidden;
+    background: white;
+}
+.details{
+    padding: 0 10px 8px 10px;
+}
+.isotopeSelector figure{
+    margin:0;
+}
+.dropdown-menu{
+    margin:2px 0 0 -200px;
+    padding: 0;
+}
+.badge{
+    position: relative;
+    top: -14px;
+    width: 22px;
+    left: 2px;
+    background-color: #F34235;
+}
+.notifiy{
+    border-bottom :1px solid #f5f5f5;
+    text-align: center;
+}
+.tips{
+    padding:0;
+}
+.state{
+    padding: 0 0 0 27px;
+}
+.tips-align{
+    padding:0 0 0 3px;
+    margin: 0 0 15px 0;
+}
+.select-state-tip{
+    border:1px solid #000;
+}
+.post-images{
+    display:block;
+}
+.edit-btn{
+    padding:5px;
+}
+.edit-post{
+    padding:0;
+    margin:0 0 0  15px;
+}
+/*.dropdown-menu>li>.profile>a{*/
+    /*color:#000;*/
+/*}*/
+/*.dropdown .dropdown-menu a{*/
+    /*color:#000;*/
+/*}*/
+.post-widget{
+    height:420px;
+}
+.thumbnail a>img, .thumbnail>img {
+    display: block;
+    max-width: 100%;
+ height:250px ;
+}
+.post-title{
+    margin:0;
+}
+.thumbnail.deals .caption p {
+    margin-bottom: 10px;
+}
+.navigation:hover.navigation-des{
+    display:block;
+}
+/*.destination-nav:hover{*/
+    /*display:block;*/
+/*}*/
+@media (min-width: 450px)and (max-width: 1024px){
+    .state {
+        padding: 0;
+    }
+}
