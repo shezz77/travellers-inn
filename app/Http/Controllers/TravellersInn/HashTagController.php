@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateHashTagRequest;
 use App\Models\Post;
 use App\Repositories\Contracts\IHashTagRepo;
 use App\Repositories\Contracts\IPostRepo;
+use App\Services\Contracts\IHashTagService;
 use App\Utils\JsonResult;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -18,19 +19,20 @@ use Illuminate\Pagination\Paginator;
 
 class HashTagController extends Controller
 {
-    private $_hashTagRepo;
     private $_postRepo;
+    private $_hashTagService;
 
     /**
      * HashTagController constructor.
-     * @param $_hashTagRepo
+     * @param IPostRepo $_postRepo
+     * @param IHashTagService $hashTagService
+     * @internal param IHashTagRepo $_hashTagRepo
      */
-    public function __construct(IHashTagRepo $_hashTagRepo, IPostRepo $_postRepo)
+    public function __construct(IPostRepo $_postRepo, IHashTagService $hashTagService)
     {
-        $this->_hashTagRepo = $_hashTagRepo;
         $this->_postRepo = $_postRepo;
+        $this->_hashTagService = $hashTagService;
     }
-
 
     /**
      * Display a listing of the role.
@@ -41,7 +43,8 @@ class HashTagController extends Controller
     public function index(Request $request)
     {
         $inputRequest = $request->all();
-        $hashTags = $this->_hashTagRepo->all($inputRequest);
+        $hashTags = $this->_hashTagService->all($inputRequest);
+
         if ($request->ajax()){
             return JsonResult::JSONSuccessResult('', $hashTags);
         }
@@ -57,7 +60,7 @@ class HashTagController extends Controller
     public function store(CreateHashTagRequest $request)
     {
         $inputRequest = $request->all();
-        $this->_hashTagRepo->create($inputRequest);
+        $this->_hashTagService->create($inputRequest);
 
         Session::flash('success', "New Tag was successfully created!");
         return redirect()->route('hash-tags.index');
@@ -72,7 +75,7 @@ class HashTagController extends Controller
      */
     public function show($id)
     {
-        $hashTag = $this->_hashTagRepo->find($id);
+        $hashTag = $this->_hashTagService->find($id);
         return view('travellers-inn.admin.hash-tags.show', compact('hashTag'));
     }
 
@@ -86,7 +89,7 @@ class HashTagController extends Controller
     public function edit($id)
     {
         $errorAjaxResponse = ['success'=> false, 'error'=>true, 'errorCode'=>500, 'message'=>''];
-        $hashTag = $this->_hashTagRepo->find($id);
+        $hashTag = $this->_hashTagService->find($id);
 
         if(!$hashTag){
             return response()->json($errorAjaxResponse);
@@ -105,7 +108,7 @@ class HashTagController extends Controller
     public function update(UpdateHashTagRequest $request)
     {
         $hashTagId = $request->id;
-        $this->_hashTagRepo->update($request->all(), ['id' => $hashTagId]);
+        $this->_hashTagService->update($request->all(), ['id' => $hashTagId]);
 
         Session::flash('success', "Successfully Updated your HashTag");
 
@@ -125,7 +128,7 @@ class HashTagController extends Controller
             'id' => $id
         ];
 
-        $this->_hashTagRepo->destroy($hashTag);
+        $this->_hashTagService->destroy($hashTag);
         Session::flash('success', 'Tag was deleted successfully');
 
         return redirect()->route('hash-tags.index');
@@ -137,7 +140,7 @@ class HashTagController extends Controller
         $posts = Post::latest()->limit(AppGlobal::RECENT_POST_LIMIT)->get();
 
         $hashTagID = ['id' => $id];
-        $hashTagPost = $this->_hashTagRepo->fetchPostsByHashTagId($hashTagID);
+        $hashTagPost = $this->_hashTagService->fetchPostsByHashTagId($hashTagID);
 
 
         $hashTagPosts = $this->paginate($hashTagPost, AppGlobal::POST_DEFAULT_LIMIT);

@@ -13,7 +13,7 @@ use App\Repositories\Contracts\IBaseRepo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-abstract class BaseRepo  implements IBaseRepo
+abstract class BaseRepo implements IBaseRepo
 {
     protected $model;
     protected $db;

@@ -7,6 +7,7 @@ use App\Models\Slider;
 use App\Repositories\Contracts\IPostRepo;
 use App\Repositories\Contracts\ISliderRepo;
 use App\Repositories\Contracts\IUserRepo;
+use App\Traits\Encryption;
 use App\Utils\AuthWrapper;
 use Illuminate\Http\Request;
 use App\Repositories\Contracts\ICategoryRepo;
@@ -23,6 +24,7 @@ use Illuminate\Pagination\Paginator;
 class PagesController extends Controller
 {
     use ValidatesRequests;
+    use Encryption;
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -50,6 +52,9 @@ class PagesController extends Controller
      */
     public function getContactUs()
     {
+        $value = $this->encrypt("741258963");
+        $value2 = $this->decrypt($value);
+        dd($value2);
         return view('travellers-inn.home.pages.contact-us');
     }
 

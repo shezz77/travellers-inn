@@ -165,7 +165,6 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        App\Providers\RepositoryServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
 
         /*
@@ -186,6 +185,9 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Cohensive\Embed\EmbedServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
+
+        App\Providers\RepositoryServiceProvider::class,
+        App\Providers\ServiceServiceProvider::class,
     ],
 
     /*
